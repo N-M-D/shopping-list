@@ -1,38 +1,62 @@
+import { useEffect, useState } from 'react';
 import {Link} from 'react-router-dom';
 
 const Header = () => {
 
+    const [isLoggedIn, setIsLoggedIn] = useState();
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        setIsLoggedIn((token != null));
+
+    }, [])
+
+    function logOutHandler() {
+        localStorage.clear();
+        window.location.href = "/";
+    }
+
     return ( 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Chua Shopping</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <a className="navbar-brand" href="#">Chua Shopping</a>
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                Dropdown
-                </a>
-                <div class="dropdown-menu">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled">Disabled</a>
-            </li>
+        <div className="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul className="navbar-nav mr-auto">
+                <li className="nav-item">
+                    <Link className="nav-link" to="/">Home</Link>
+                </li>
+                <li className="nav-item">
+                    <Link className="nav-link" to="/families">My Families</Link>
+                </li>
+                <li className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+                    Dropdown
+                    </a>
+                    <div className="dropdown-menu">
+                        <a className="dropdown-item" href="#">Action</a>
+                        <a className="dropdown-item" href="#">Another action</a>
+                        <div className="dropdown-divider"></div>
+                        <a className="dropdown-item" href="#">Something else here</a>
+                    </div>
+                </li>
+                <li className="nav-item">
+                    <a className="nav-link disabled">Disabled</a>
+                </li>
             </ul>
-            <Link to="/login">Login</Link>
+            {isLoggedIn && 
+            <div className='nav-item dropdown'>
+                <div role="button" data-toggle="dropdown" aria-expanded="false" className='nav-link dropdown-toggle'>User</div>
+                <div className="dropdown-menu">
+                    <Link to="/user">My Profile</Link>
+                    <div className="dropdown-divider"></div>
+                    <button className='btn btn-danger' id="logOutBtn" onClick={logOutHandler}>Log Out</button>
+                </div>
+            </div>
+            }
+            {!isLoggedIn && <Link to="/login" style={{backgroundColor: 'blue', padding: '0.5em 1em', color:'white', borderRadius: '1em'}}>Login</Link>}
         </div>
         </nav>
      );

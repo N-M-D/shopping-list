@@ -1,9 +1,16 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from 'react-router-dom'
 const Login = () => {
     const [email, setEmail] = useState();
     const [password, setPassword] = useState();
     const heroku = `https://chua-shopping.herokuapp.com`;
+
+    useEffect(() => {
+        const token = localStorage.getItem("token");
+        if(token != null){
+            window.location.href = "/user";
+        }
+    })
 
     function login(e){
         e.preventDefault();
@@ -27,6 +34,7 @@ const Login = () => {
 
             localStorage.setItem("token", token);
             alert("Logged In");
+            window.location.href = "/";
         })
         .catch((error) => {
             alert(error);
