@@ -31,17 +31,6 @@ const Header = () => {
                 <li className="nav-item">
                     <Link className="nav-link" to="/families">My Families</Link>
                 </li>
-                <li className="nav-item dropdown">
-                    <a className="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
-                    Dropdown
-                    </a>
-                    <div className="dropdown-menu">
-                        <a className="dropdown-item" href="#">Action</a>
-                        <a className="dropdown-item" href="#">Another action</a>
-                        <div className="dropdown-divider"></div>
-                        <a className="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>
                 <li className="nav-item">
                     <a className="nav-link disabled">Disabled</a>
                 </li>
