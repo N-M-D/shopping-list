@@ -9,6 +9,7 @@ import Families from './pages/families';
 import Products from './pages/products';
 import ShoppingList from './pages/shoppingList';
 import User from './pages/user';
+import Family from './pages/family';
 
 function App() {
   return (
@@ -37,6 +38,9 @@ function App() {
             </Route>
             <Route path='/user'>
               <User/>
+            </Route>
+            <Route path='/family/:id'>
+              <Family/>
             </Route>
           </Switch>
         </div>

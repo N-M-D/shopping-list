@@ -34,17 +34,6 @@ const Profile = () => {
         alert("Done");
     }
 
-    // async function updatePfp(e){
-    //     e.preventDefault();
-    //     const formData = new FormData();
-    //     formData.append("pfp", pfp);
-    //     const result = await axios.put(`${heroku}/user/update`, formData, 
-    //         { headers: {'Content-Type': 'multipart/form-data', 
-    //             'Authorization': 'Bearer ' + token}}
-    //     )
-    //     console.log(result)
-    // }
-
     useEffect(() => {
         if(token == null){
             window.location.href = "/"
