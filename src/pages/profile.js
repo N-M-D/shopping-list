@@ -63,7 +63,7 @@ const Profile = () => {
     return ( 
         <div className="container" style={{border: "1px solid green"}}>
             <div id="modal" style={{backgroundColor: "#222", display: "none", zIndex: "1", position: "fixed", color: "white", padding: "1em", width: "calc(100%-15px)"}}>
-                <span class="close" onClick={hideModal}>&times;</span>
+                <span className="close" onClick={hideModal}>&times;</span>
                 <h4 className="header-4">Edit Profile Picture</h4>
                 <form>
                     <div className="form-group">
