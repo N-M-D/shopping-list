@@ -59,7 +59,7 @@ const Families = () => {
                 <div className="modal-dialog" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <h5 className="modal-title" id="exampleModalLabel">Create New Family</h5>
                             <button type="button" className="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                             </button>
@@ -78,8 +78,7 @@ const Families = () => {
                 </div>
             </div>
             <h1>Family</h1>
-            <button className="btn btn-primary" onClick={createFamily}>Create Family</button>
-            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Launch demo modal</button>
+            <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Create New Family</button>
             <h2>My Families</h2>     
             <div className="family-group" style={{border: "1px solid black"}}>
                 {

@@ -3,17 +3,36 @@ import {Link} from 'react-router-dom';
 
 const Header = () => {
 
+    const heroku = `https://chua-shopping.herokuapp.com`;
+    const token = localStorage.getItem("token");
+
     const [isLoggedIn, setIsLoggedIn] = useState();
+    const [username, setUsername] = useState("User");
 
     useEffect(() => {
-        const token = localStorage.getItem("token");
+        getUsername();
         setIsLoggedIn((token != null));
-
     }, [])
 
     function logOutHandler() {
         localStorage.clear();
         window.location.href = "/";
+    }
+
+    function getUsername(){
+        fetch(`${heroku}/user/username`, {
+            method: "GET",
+            headers: {
+                'Content-Type': 'multipart/form-data',
+                'Authorization': 'Bearer ' + token,
+            }
+        })
+        .then((response) => {
+            return response.json()
+        })
+        .then((response) => {
+            setUsername(response.rows[0].username)
+        })
     }
 
     return ( 
@@ -31,13 +50,10 @@ const Header = () => {
                 <li className="nav-item">
                     <Link className="nav-link" to="/families">My Families</Link>
                 </li>
-                <li className="nav-item">
-                    <a className="nav-link disabled">Disabled</a>
-                </li>
             </ul>
             {isLoggedIn && 
             <div className='nav-item dropdown'>
-                <div role="button" data-toggle="dropdown" aria-expanded="false" className='nav-link dropdown-toggle'>User</div>
+                <div role="button" data-toggle="dropdown" aria-expanded="false" className='nav-link dropdown-toggle'>{username}</div>
                 <div className="dropdown-menu">
                     <Link to="/user">My Profile</Link>
                     <div className="dropdown-divider"></div>

@@ -3,10 +3,10 @@ import axios from 'axios'
 
 const Profile = () => {
 
-    const [pfp, setPfp] = useState();
+    const [pfp, setPfp] = useState("");
     const [profile, setProfile] = useState();
-    const [email, setEmail] = useState();
-    const [username, setUsername] = useState();
+    const [email, setEmail] = useState("");
+    const [username, setUsername] = useState("");
     const heroku = `https://chua-shopping.herokuapp.com`;
     // const heroku = `http://localhost:8080`
     const token = localStorage.getItem('token');
@@ -83,7 +83,7 @@ const Profile = () => {
                         <div className="col col-md-6 col-6">
                             <div className="form-group">
                                 <label>Email</label>
-                                <input id="email" type="email" className="form-control" value={email}></input>
+                                <input id="email" type="email" className="form-control" value={email} readOnly></input>
                             </div>
                             <div className="form-group">
                                 <label>Username</label>
